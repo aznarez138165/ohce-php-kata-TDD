@@ -31,8 +31,7 @@ class Ohce {
             return "¡Buenos días {$name}!";
         }
 
-
-        return "Son las {$hour}";
+        return "¡Buenas tardes {$name}!";
     }
 
     /**
@@ -62,7 +61,7 @@ class Ohce {
      */
     public function hourIsMorning(string $hour): bool
     {
-        return strtotime($hour) >= strtotime("06:00") || strtotime($hour) < strtotime("12:00");
+        return strtotime($hour) >= strtotime("06:00") && strtotime($hour) < strtotime("12:00");
     }
 
 
