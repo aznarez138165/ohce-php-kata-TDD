@@ -2,11 +2,16 @@
 
 namespace Deg540\DockerPHPOhce;
 
+use PHPUnit\Framework\Constraint\IsEqual;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\equalTo;
 use function PHPUnit\Framework\isEmpty;
 
-class Ohce {
+class Ohce
+{
 
-    public function __construct() {
+    public function __construct()
+    {
     }
 
     /**
@@ -14,20 +19,23 @@ class Ohce {
      * @param string $hour
      * @return string
      */
-    public function greeting(string $string, string $hour): string {
+    public function greeting(string $string, string $hour): string
+    {
 
         $name = $this->getName($string);
 
-        if (empty($hour)){
-
+        if (empty($hour))
+        {
             return "Hola {$name}";
         }
 
-        if ($this->hourIsNight($hour)) {
+        if ($this->hourIsNight($hour))
+        {
             return "¡Buenas noches {$name}!";
         }
 
-        if ($this->hourIsMorning($hour)) {
+        if ($this->hourIsMorning($hour))
+        {
             return "¡Buenos días {$name}!";
         }
 
@@ -38,24 +46,36 @@ class Ohce {
      * @param string $string
      * @return string
      */
-    public function reversed(string $string): string {
-
-        if (empty($string)) {
-            exit();
+    public function reversed(string $string): string
+    {
+        if (empty($string))
+        {
+            return "";
         }
 
         return strrev($string);
     }
 
+    public function palindromeMessage(string $string): string
+    {
+        if ($this->isPalindrome($string))
+        {
+            return "¡Bonita palabra!";
+        }
+        return "";
+    }
+
     /**
      * @param string $string
-     * @return string|void
+     * @return string
      */
-    private function getName(string $string)
+    private function getName(string $string): string
     {
-        if (!preg_match("/^ohce\s+(.+)$/", $string, $matches)) {
-            exit();
+        if (!preg_match("/^ohce\s+(.+)$/", $string, $matches))
+        {
+            return "";
         }
+
         return trim($matches[1]);
     }
 
@@ -75,6 +95,15 @@ class Ohce {
     public function hourIsMorning(string $hour): bool
     {
         return strtotime($hour) >= strtotime("06:00") && strtotime($hour) < strtotime("12:00");
+    }
+
+    /**
+     * @param string $string
+     * @return bool
+     */
+    public function isPalindrome(string $string): bool
+    {
+        return $string === $this->reversed($string);
     }
 
 }
