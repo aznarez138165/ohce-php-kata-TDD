@@ -5,11 +5,10 @@ namespace Deg540\DockerPHPOhce\Test;
 use Deg540\DockerPHPOhce\Ohce;
 use PHPUnit\Framework\TestCase;
 
-final class OhceTest extends TestCase
-{
+final class OhceTest extends TestCase {
     private Ohce $ohce;
 
-    protected function setUp(): void{
+    protected function setUp(): void {
         parent::setUp();
 
         $this->ohce = new Ohce();
@@ -18,10 +17,16 @@ final class OhceTest extends TestCase
     /**
      * @test
      */
-    public function givenNameReturnsGreeting(): void{
-        $this->assertEquals("Hola Iñigo",$this->ohce->saludo("Iñigo"));
+    public function givenNameAndNoHourReturnsBasicGreeting(): void {
+        $this->assertEquals("Hola Iñigo",$this->ohce->greeting("ohce Iñigo",""));
     }
 
+    /**
+     * @test
+     */
+    public function givenNameAndNightHourReturnsNightGreeting(): void {
+        $this->assertEquals("¡Buenas noches Iñigo!",$this->ohce->greeting("ohce Iñigo","22:00"));
+    }
 
 
 
