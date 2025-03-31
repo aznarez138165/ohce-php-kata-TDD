@@ -42,5 +42,19 @@ final class OhceTest extends TestCase {
         $this->assertEquals("¡Buenas tardes Iñigo!",$this->ohce->greeting("ohce Iñigo","15:00"));
     }
 
+    /**
+     * @test
+     */
+    public function givenWordReturnsReversedWord(): void {
+        $this->assertEquals("aloh",$this->ohce->reversed("hola"));
+    }
+
+    /**
+     * @test
+     */
+    public function givenWordRedturnsReversedWord(): void {
+        $this->assertEquals("aloh",$this->ohce->reversed("hola"));
+    }
+
 
 }

@@ -18,7 +18,7 @@ class Ohce {
 
         $name = $this->getName($string);
 
-        if(empty($hour)){
+        if (empty($hour)){
 
             return "Hola {$name}";
         }
@@ -36,7 +36,20 @@ class Ohce {
 
     /**
      * @param string $string
-     * @return mixed|void
+     * @return string
+     */
+    public function reversed(string $string): string {
+
+        if (empty($string)) {
+            exit();
+        }
+
+        return strrev($string);
+    }
+
+    /**
+     * @param string $string
+     * @return string|void
      */
     private function getName(string $string)
     {
@@ -63,6 +76,5 @@ class Ohce {
     {
         return strtotime($hour) >= strtotime("06:00") && strtotime($hour) < strtotime("12:00");
     }
-
 
 }
