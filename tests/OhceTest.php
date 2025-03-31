@@ -28,6 +28,11 @@ final class OhceTest extends TestCase {
         $this->assertEquals("¡Buenas noches Iñigo!",$this->ohce->greeting("ohce Iñigo","22:00"));
     }
 
-
+    /**
+     * @test
+     */
+    public function givenNameAndMorningHourReturnsMorningGreeting(): void {
+        $this->assertEquals("¡Buenos días Iñigo!",$this->ohce->greeting("ohce Iñigo","08:00"));
+    }
 
 }
